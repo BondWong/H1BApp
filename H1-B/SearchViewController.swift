@@ -25,7 +25,7 @@ class SearchViewController: UIViewController {
         self.view.addSubview(contentView)
         
         contentView.translatesAutoresizingMaskIntoConstraints = false
-        contentView.backgroundColor = UIColor.whiteColor()
+        contentView.backgroundColor = UIColor(patternImage: UIImage(named: "background")!)
         self.view.addConstraint(NSLayoutConstraint(item: self.view, attribute: .Bottom, relatedBy: .Equal, toItem: contentView, attribute: .Bottom, multiplier: 1, constant: 0))
         contentView.addConstraint(NSLayoutConstraint(item: contentView, attribute: .Width, relatedBy: .Equal, toItem: nil, attribute: .NotAnAttribute, multiplier: 0, constant: UIScreen.mainScreen().bounds.width))
         contentView.addConstraint(NSLayoutConstraint(item: contentView, attribute: .Height, relatedBy: .Equal, toItem: nil, attribute: .NotAnAttribute, multiplier: 0, constant: UIScreen.mainScreen().bounds.height - 64))
@@ -37,7 +37,7 @@ class SearchViewController: UIViewController {
         
         let titleOption = UIButton(type: .Custom)
         titleOption.setTitle("Title", forState: .Normal)
-        titleOption.setTitleColor(UIColor.darkGrayColor(), forState: .Normal)
+        titleOption.setTitleColor(UIColor.whiteColor(), forState: .Normal)
         titleOption.layer.borderWidth = borderWidth
         titleOption.layer.borderColor = UIColor.lightGrayColor().CGColor
         titleOption.layer.cornerRadius = cornerRadius
@@ -45,7 +45,7 @@ class SearchViewController: UIViewController {
         
         let employerOption = UIButton(type: .Custom)
         employerOption.setTitle("Employer", forState: .Normal)
-        employerOption.setTitleColor(UIColor.darkGrayColor(), forState: .Normal)
+        employerOption.setTitleColor(UIColor.whiteColor(), forState: .Normal)
         employerOption.layer.borderWidth = borderWidth
         employerOption.layer.borderColor = UIColor.lightGrayColor().CGColor
         employerOption.layer.cornerRadius = cornerRadius
@@ -53,7 +53,7 @@ class SearchViewController: UIViewController {
         
         let locationOption = UIButton(type: .Custom)
         locationOption.setTitle("Location", forState: .Normal)
-        locationOption.setTitleColor(UIColor.darkGrayColor(), forState: .Normal)
+        locationOption.setTitleColor(UIColor.whiteColor(), forState: .Normal)
         locationOption.layer.borderWidth = borderWidth
         locationOption.layer.borderColor = UIColor.lightGrayColor().CGColor
         locationOption.layer.cornerRadius = cornerRadius
@@ -73,6 +73,7 @@ class SearchViewController: UIViewController {
         optionsView.heightAnchor.constraintEqualToAnchor(contentView.heightAnchor, multiplier: 1/20).active = true
         
         let upperInput = UITextField()
+        upperInput.backgroundColor = UIColor.whiteColor()
         upperInput.rightViewMode = .Never
         upperInput.returnKeyType = .Search
         upperInput.addTarget(self, action: #selector(SearchViewController.search), forControlEvents: .EditingDidEndOnExit)
@@ -91,6 +92,7 @@ class SearchViewController: UIViewController {
         
         
         let lowerInput = UITextField()
+        lowerInput.backgroundColor = UIColor.whiteColor()
         lowerInput.returnKeyType = .Search
         lowerInput.rightViewMode = .Always
         lowerInput.addTarget(self, action: #selector(SearchViewController.search), forControlEvents: .EditingDidEndOnExit)
@@ -196,7 +198,7 @@ class SearchViewController: UIViewController {
             return
         }
         
-        self.inputTuple.0.backgroundColor = nil
+        self.inputTuple.0.backgroundColor = UIColor.whiteColor()
         
         self.performSegueWithIdentifier("searchResult", sender: self)
         
