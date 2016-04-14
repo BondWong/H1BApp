@@ -10,6 +10,7 @@ import UIKit
 
 class RecordsViewController: UITableViewController {
     var module: Module!
+    var data: [String: String]?
     
     override func viewDidLoad() {
         super.viewDidLoad()
