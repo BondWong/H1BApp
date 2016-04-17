@@ -8,15 +8,33 @@
 
 import UIKit
 
+var bookmarklist: [[String: AnyObject]] = {
+    if let bm:[[String: AnyObject]] = NSUserDefaults.standardUserDefaults().arrayForKey("bookmark") as? [[String: AnyObject]]{
+        return bm
+    } else {
+        return []
+    }
+}()
+
 class BookmarkViewController: UINavigationController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
         
-        let vc:EmployerListViewController =  self.viewControllers.first as! EmployerListViewController
+        var data: [String: AnyObject] = [:]
+        data["pageNum"] = 1;
+        data["pageSize"] = 50
+        data["hasNext"] = false
+        data["elements"] = bookmarklist
+        let vc:RecordsViewController =  self.viewControllers.first as! RecordsViewController
         vc.module = .BOOKMARK
+        vc.data = data
     }
 
     override func didReceiveMemoryWarning() {

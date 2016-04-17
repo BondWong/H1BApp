@@ -11,19 +11,20 @@ import UIKit
 class SearchViewController: UIViewController {
     let borderWidth:CGFloat = 1.5
     let cornerRadius:CGFloat = 7.5
+    let start = 0
     
     var options: [UIButton] = []
     var inputTuple: (UITextField, UITextField)!
     var choice: String!
-    var session: NSURLSession! {
+    lazy var session: NSURLSession! = {
         let configuration = NSURLSessionConfiguration.defaultSessionConfiguration()
         configuration.allowsCellularAccess = true
         configuration.timeoutIntervalForRequest = 15.0
         
         return NSURLSession(configuration: configuration)
-    }
-    
-    var data: [String: String]?
+    }()
+    var url: String!
+    var data: [String: AnyObject]?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -209,25 +210,25 @@ class SearchViewController: UIViewController {
         
         self.inputTuple.0.backgroundColor = UIColor.whiteColor()
         
-        var url = ""
+        url = ""
         switch self.choice {
             case "Title":
                 var location = inputTuple.1.text!
                 location = location.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
                 if location == "" {
-                    url = "http://localhost:8080/v1/position/title/\(upperInputText)/0"
+                    url = "http://localhost:8080/v1/position/title/\(upperInputText)/"
                 } else {
-                    url = "http://localhost:8080/v1/position/title/\(upperInputText)/address/\(location)/0"
+                    url = "http://localhost:8080/v1/position/title/\(upperInputText)/address/\(location)/"
                 }
             case "Employer":
-                url = "http://localhost:8080/v1/position/company/\(upperInputText)/0"
+                url = "http://localhost:8080/v1/position/company/\(upperInputText)/"
             case "Location":
-                url = "http://localhost:8080/v1/position/location/\(upperInputText)/0"
+                url = "http://localhost:8080/v1/position/address/\(upperInputText)/"
             default:
                 break
         }
         
-        let task = session.dataTaskWithURL(NSURL(string: url)!, completionHandler: {[weak self](data: NSData?, response: NSURLResponse?, error: NSError?) in
+        let task = session.dataTaskWithURL(NSURL(string: url + "\(start)")!, completionHandler: {[weak self](data: NSData?, response: NSURLResponse?, error: NSError?) in
             if error != nil {
                 print(error?.userInfo)
                 return
@@ -239,14 +240,18 @@ class SearchViewController: UIViewController {
                     return
                 }
             }
+            
             do {
-                self!.data = try NSJSONSerialization.JSONObjectWithData(data!, options: []) as? [String : String]
-                dispatch_async(dispatch_get_main_queue(), {
-                    self?.performSegueWithIdentifier("searchResult", sender: self)
-                })
+                self!.data = try NSJSONSerialization.JSONObjectWithData(data!, options:[NSJSONReadingOptions.MutableContainers]) as? [String: AnyObject]
             } catch let error as NSError{
                 print("json error: \(error.localizedDescription)")
+                return
             }
+            
+            dispatch_async(dispatch_get_main_queue(), {
+                self!.performSegueWithIdentifier("searchResult", sender: self)
+            })
+            
             }
         )
         task.resume()
@@ -263,6 +268,7 @@ class SearchViewController: UIViewController {
         let rvc = segue.destinationViewController as! RecordsViewController
         rvc.data = self.data
         rvc.module = Module.SEARCH
+        rvc.url = self.url
     }
 
 }

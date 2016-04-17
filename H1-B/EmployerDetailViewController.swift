@@ -13,6 +13,7 @@ class EmployerDetailViewController: UIViewController, UITableViewDataSource, UIT
     var borderColor: UIColor!
     var indicatorViews: (UIView, UIView)!
     var mainViews: (UITableView, UIView)!
+    var data: AnyObject!
     
     let rowHeight = UIScreen.mainScreen().bounds.height * 0.4 / 4
 
@@ -25,6 +26,15 @@ class EmployerDetailViewController: UIViewController, UITableViewDataSource, UIT
         self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
         
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "Bookmark-fill"), style: .Done, target: self, action: #selector(EmployerDetailViewController.bookmark(_:)))
+        
+        let dataId = self.data["id"] as! CLong
+        for bm in bookmarklist {
+            let bmId = bm["id"] as! CLong
+            if bmId == dataId {
+                self.navigationItem.rightBarButtonItem!.tintColor = UIColor(patternImage: UIImage(named: "Bookmark-fill")!)
+                break
+            }
+        }
         
         let segmentView = UIView()
         segmentView.backgroundColor = UIColor.whiteColor()
@@ -174,8 +184,6 @@ class EmployerDetailViewController: UIViewController, UITableViewDataSource, UIT
         itemLabel.leadingAnchor.constraintEqualToAnchor(seperator.leadingAnchor).active = true
         
         let dataLabel = UILabel()
-        dataLabel.font = UIFont(name: dataLabel.font!.fontName, size: dataLabel.font!.pointSize + 5)
-        dataLabel.text = "data"
         dataLabel.translatesAutoresizingMaskIntoConstraints = false
         cell.contentView.addSubview(dataLabel)
         dataLabel.bottomAnchor.constraintEqualToAnchor(cell.bottomAnchor, constant: -rowHeight/10).active = true
@@ -184,19 +192,20 @@ class EmployerDetailViewController: UIViewController, UITableViewDataSource, UIT
         switch indexPath.row {
         case 0:
             itemLabel.text = "Employer Name"
-            dataLabel.text = "Robert Chen"
+            dataLabel.text = data["company"]?!["name"] as? String
         case 1:
             itemLabel.text = "Contact"
-            dataLabel.text = "(XXX)-XXX-XXXX"
+            dataLabel.text = data["company"]?!["contact"] as? String
         case 2:
             itemLabel.text = "Street"
-            dataLabel.text = "325 N. 15th Street"
+            dataLabel.text = data["company"]?!["address"]?!["street"] as? String
         case 3:
-            itemLabel.text = "City, State and Zipcode"
-            dataLabel.text = "Philadelphia PA 19102"
+            itemLabel.text = "City, State and Zipode"
+            dataLabel.text = "\((data["company"]?!["address"]?!["city"]!!)!) \((data["company"]?!["address"]?!["state"]!!)!) \((data["company"]?!["address"]?!["zipCode"]!!)!)"
         default:
             break
         }
+        dataLabel.sizeToFit()
         
         return cell
     }
@@ -243,8 +252,7 @@ class EmployerDetailViewController: UIViewController, UITableViewDataSource, UIT
             
             
             let titleLabel = UILabel()
-            titleLabel.text = "Toilet Cleaner"
-            titleLabel.font = UIFont(name: titleLabel.font!.fontName, size: titleLabel.font!.pointSize + 5)
+            titleLabel.text = data["name"] as? String
             titleLabel.translatesAutoresizingMaskIntoConstraints = false
             dataView.addSubview(titleLabel)
             titleLabel.topAnchor.constraintEqualToAnchor(dataView.topAnchor, constant: rowHeight / 15).active = true
@@ -252,23 +260,20 @@ class EmployerDetailViewController: UIViewController, UITableViewDataSource, UIT
             
             let visatypeLabel = UILabel()
             visatypeLabel.text = "Visa Type: H1-B"
-            visatypeLabel.font = UIFont(name: visatypeLabel.font!.fontName, size: visatypeLabel.font!.pointSize)
             visatypeLabel.translatesAutoresizingMaskIntoConstraints = false
             dataView.addSubview(visatypeLabel)
             visatypeLabel.topAnchor.constraintEqualToAnchor(titleLabel.bottomAnchor, constant: rowHeight / 15).active = true
             visatypeLabel.leadingAnchor.constraintEqualToAnchor(titleLabel.leadingAnchor).active = true
             
             let wageLabel = UILabel()
-            wageLabel.text = "Wage: $80.000/year"
-            wageLabel.font = UIFont(name: wageLabel.font!.fontName, size: wageLabel.font!.pointSize)
+            wageLabel.text = "Salary: \(data["salary"]!!)"
             wageLabel.translatesAutoresizingMaskIntoConstraints = false
             dataView.addSubview(wageLabel)
             wageLabel.topAnchor.constraintEqualToAnchor(visatypeLabel.bottomAnchor, constant: rowHeight / 15).active = true
             wageLabel.leadingAnchor.constraintEqualToAnchor(visatypeLabel.leadingAnchor).active = true
             
             let workLocationLabel = UILabel()
-            workLocationLabel.text = "Work Location: Philadelphia, PA"
-            workLocationLabel.font = UIFont(name: workLocationLabel.font!.fontName, size: workLocationLabel.font!.pointSize)
+            workLocationLabel.text = "Work Location: \((data["location"]?!["city"]!)!) \((data["location"]?!["state"]!)!)"
             workLocationLabel.translatesAutoresizingMaskIntoConstraints = false
             dataView.addSubview(workLocationLabel)
             workLocationLabel.topAnchor.constraintEqualToAnchor(wageLabel.bottomAnchor, constant: rowHeight / 15).active = true
@@ -280,9 +285,32 @@ class EmployerDetailViewController: UIViewController, UITableViewDataSource, UIT
     func bookmark(barButtonItem: UIBarButtonItem) {
         if barButtonItem.tintColor == nil {
             barButtonItem.tintColor = UIColor(patternImage: UIImage(named: "Bookmark-fill")!)
+            
+            let dataId = self.data["id"] as! CLong
+            for ele in bookmarklist {
+                let eleId = ele["id"] as! CLong
+                if eleId == dataId {
+                    return
+                }
+            }
+            bookmarklist.append(self.data as! ([String : AnyObject]))
+            if bookmarklist.count > 50 {
+                bookmarklist.removeFirst()
+            }
         }
         else {
             barButtonItem.tintColor = nil
+            
+            let dataId = self.data["id"] as! CLong
+            var index = 0
+            for ele in bookmarklist {
+                let eleId = ele["id"] as! CLong
+                if eleId == dataId {
+                    bookmarklist.removeAtIndex(index)
+                    break
+                }
+                index += 1
+            }
         }
     }
 

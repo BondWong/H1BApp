@@ -17,7 +17,6 @@
 		7B5EB0861C336F47005CEA40 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7B5EB0851C336F47005CEA40 /* Assets.xcassets */; };
 		7B7EB9BF1C353FCC00B43492 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B7EB9BE1C353FCC00B43492 /* Utils.swift */; };
 		7B7EB9C11C3540EC00B43492 /* RecordsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B7EB9C01C3540EC00B43492 /* RecordsViewController.swift */; };
-		7BB856281C346B1B00ED4BC6 /* EmployerListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BB856271C346B1B00ED4BC6 /* EmployerListViewController.swift */; };
 		7BB8562A1C346C8300ED4BC6 /* EmployerDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BB856291C346C8300ED4BC6 /* EmployerDetailViewController.swift */; };
 		7BFC684A1C3544D900DFAC36 /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BFC68491C3544D900DFAC36 /* HistoryViewController.swift */; };
 		7BFC684C1C354A9B00DFAC36 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BFC684B1C354A9B00DFAC36 /* AboutViewController.swift */; };
@@ -57,7 +56,6 @@
 		7B5EB0851C336F47005CEA40 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7B7EB9BE1C353FCC00B43492 /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		7B7EB9C01C3540EC00B43492 /* RecordsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordsViewController.swift; sourceTree = "<group>"; };
-		7BB856271C346B1B00ED4BC6 /* EmployerListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmployerListViewController.swift; sourceTree = "<group>"; };
 		7BB856291C346C8300ED4BC6 /* EmployerDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmployerDetailViewController.swift; sourceTree = "<group>"; };
 		7BFC68491C3544D900DFAC36 /* HistoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
 		7BFC684B1C354A9B00DFAC36 /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
@@ -117,7 +115,6 @@
 				7B573F271C31F64E0032880D /* BookmarkViewController.swift */,
 				7BFC684B1C354A9B00DFAC36 /* AboutViewController.swift */,
 				7B7EB9C01C3540EC00B43492 /* RecordsViewController.swift */,
-				7BB856271C346B1B00ED4BC6 /* EmployerListViewController.swift */,
 				7BB856291C346C8300ED4BC6 /* EmployerDetailViewController.swift */,
 				7B5EB0821C333250005CEA40 /* Utils */,
 				7B573EFD1C31F2C00032880D /* Main.storyboard */,
@@ -291,7 +288,6 @@
 				7BFC684C1C354A9B00DFAC36 /* AboutViewController.swift in Sources */,
 				7BB8562A1C346C8300ED4BC6 /* EmployerDetailViewController.swift in Sources */,
 				7B573EF81C31F2C00032880D /* AppDelegate.swift in Sources */,
-				7BB856281C346B1B00ED4BC6 /* EmployerListViewController.swift in Sources */,
 				7BFC684A1C3544D900DFAC36 /* HistoryViewController.swift in Sources */,
 				7B7EB9C11C3540EC00B43492 /* RecordsViewController.swift in Sources */,
 			);

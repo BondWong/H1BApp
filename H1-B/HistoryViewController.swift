@@ -8,15 +8,33 @@
 
 import UIKit
 
+var history: [AnyObject] = {
+    if let his:[AnyObject] = NSUserDefaults.standardUserDefaults().arrayForKey("history") {
+        return his
+    } else {
+        return []
+    }
+}()
+
 class HistoryViewController: UINavigationController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
         
+        var data: [String: AnyObject] = [:]
+        data["pageNum"] = 1;
+        data["pageSize"] = 50
+        data["hasNext"] = false
+        data["elements"] = history
         let vc = self.viewControllers.first as! RecordsViewController
         vc.module = Module.HISTORY
+        vc.data = data
     }
 
     override func didReceiveMemoryWarning() {
