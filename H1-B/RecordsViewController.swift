@@ -24,6 +24,7 @@ class RecordsViewController: UITableViewController {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
+        self.tableView.rowHeight = UITableViewAutomaticDimension
         
         switch module {
         case let m where m == Module.BOOKMARK:
@@ -56,6 +57,10 @@ class RecordsViewController: UITableViewController {
         } else {
             return 0
         }
+    }
+    
+    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return UIScreen.mainScreen().bounds.height / 15
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -100,7 +105,8 @@ class RecordsViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
         let element: [[String: AnyObject]] = self.data!["elements"] as! [[String: AnyObject]]
-        if self.module == Module.SEARCH && indexPath.row + 1 == element.count {
+        let hasNext = self.data?["hasNext"] as! Int
+        if self.module == Module.SEARCH && indexPath.row + 1 == element.count && hasNext == 1 {
             let task = session.dataTaskWithURL(NSURL(string: url + "\(element.count)")!, completionHandler: {[weak self](data: NSData?, response: NSURLResponse?, error: NSError?) in
                 if error != nil {
                     print(error?.userInfo)
@@ -119,16 +125,16 @@ class RecordsViewController: UITableViewController {
                     var originalElements: [[String: AnyObject]] = self?.data!["elements"] as! [[String: AnyObject]]
                     let newElements: [[String: AnyObject]] = newData!["elements"] as! [[String: AnyObject]]
                     originalElements.appendContentsOf(newElements)
+                    newData!["elements"] = originalElements
+                    self?.data  = newData
                     
-                    // self?.data!["elements"].append(d["elements"])
+                    dispatch_async(dispatch_get_main_queue(), {
+                        self?.tableView.reloadData()
+                    })
                 } catch let error as NSError{
                     print("json error: \(error.localizedDescription)")
                     return
                 }
-                
-                dispatch_async(dispatch_get_main_queue(), {
-                    self?.tableView.reloadData()
-                })
                 
             })
             task.resume()
