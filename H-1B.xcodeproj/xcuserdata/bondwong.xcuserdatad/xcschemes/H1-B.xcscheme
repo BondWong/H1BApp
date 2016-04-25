@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "7B573EF31C31F2C00032880D"
-               BuildableName = "H1-B.app"
-               BlueprintName = "H1-B"
-               ReferencedContainer = "container:H1-B.xcodeproj">
+               BuildableName = "H-1B.app"
+               BlueprintName = "H-1B"
+               ReferencedContainer = "container:H-1B.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "7B573F091C31F2C00032880D"
-               BuildableName = "H1-BTests.xctest"
-               BlueprintName = "H1-BTests"
-               ReferencedContainer = "container:H1-B.xcodeproj">
+               BuildableName = "H-1B.xctest"
+               BlueprintName = "H-1BTests"
+               ReferencedContainer = "container:H-1B.xcodeproj">
             </BuildableReference>
          </TestableReference>
          <TestableReference
@@ -43,9 +43,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "7B573F141C31F2C00032880D"
-               BuildableName = "H1-BUITests.xctest"
-               BlueprintName = "H1-BUITests"
-               ReferencedContainer = "container:H1-B.xcodeproj">
+               BuildableName = "H-1B.xctest"
+               BlueprintName = "H-1BUITests"
+               ReferencedContainer = "container:H-1B.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -53,9 +53,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "7B573EF31C31F2C00032880D"
-            BuildableName = "H1-B.app"
-            BlueprintName = "H1-B"
-            ReferencedContainer = "container:H1-B.xcodeproj">
+            BuildableName = "H-1B.app"
+            BlueprintName = "H-1B"
+            ReferencedContainer = "container:H-1B.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -76,9 +76,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "7B573EF31C31F2C00032880D"
-            BuildableName = "H1-B.app"
-            BlueprintName = "H1-B"
-            ReferencedContainer = "container:H1-B.xcodeproj">
+            BuildableName = "H-1B.app"
+            BlueprintName = "H-1B"
+            ReferencedContainer = "container:H-1B.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -95,9 +95,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "7B573EF31C31F2C00032880D"
-            BuildableName = "H1-B.app"
-            BlueprintName = "H1-B"
-            ReferencedContainer = "container:H1-B.xcodeproj">
+            BuildableName = "H-1B.app"
+            BlueprintName = "H-1B"
+            ReferencedContainer = "container:H-1B.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

@@ -40,15 +40,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		7B573EF41C31F2C00032880D /* H1-B.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "H1-B.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		7B573EF41C31F2C00032880D /* H-1B.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "H-1B.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7B573EF71C31F2C00032880D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7B573EFE1C31F2C00032880D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		7B573F031C31F2C00032880D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7B573F051C31F2C00032880D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		7B573F0A1C31F2C00032880D /* H1-BTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "H1-BTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		7B573F0A1C31F2C00032880D /* H-1B.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "H-1B.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7B573F0E1C31F2C00032880D /* H1_BTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = H1_BTests.swift; sourceTree = "<group>"; };
 		7B573F101C31F2C00032880D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		7B573F151C31F2C00032880D /* H1-BUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "H1-BUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		7B573F151C31F2C00032880D /* H-1B.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "H-1B.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7B573F191C31F2C00032880D /* H1_BUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = H1_BUITests.swift; sourceTree = "<group>"; };
 		7B573F1B1C31F2C00032880D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7B573F271C31F64E0032880D /* BookmarkViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookmarkViewController.swift; sourceTree = "<group>"; };
@@ -89,7 +89,7 @@
 		7B573EEB1C31F2C00032880D = {
 			isa = PBXGroup;
 			children = (
-				7B573EF61C31F2C00032880D /* H1-B */,
+				7B573EF61C31F2C00032880D /* H-1B */,
 				7B573F0D1C31F2C00032880D /* H1-BTests */,
 				7B573F181C31F2C00032880D /* H1-BUITests */,
 				7B573EF51C31F2C00032880D /* Products */,
@@ -99,14 +99,14 @@
 		7B573EF51C31F2C00032880D /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				7B573EF41C31F2C00032880D /* H1-B.app */,
-				7B573F0A1C31F2C00032880D /* H1-BTests.xctest */,
-				7B573F151C31F2C00032880D /* H1-BUITests.xctest */,
+				7B573EF41C31F2C00032880D /* H-1B.app */,
+				7B573F0A1C31F2C00032880D /* H-1B.xctest */,
+				7B573F151C31F2C00032880D /* H-1B.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		7B573EF61C31F2C00032880D /* H1-B */ = {
+		7B573EF61C31F2C00032880D /* H-1B */ = {
 			isa = PBXGroup;
 			children = (
 				7B573EF71C31F2C00032880D /* AppDelegate.swift */,
@@ -122,6 +122,7 @@
 				7B573F021C31F2C00032880D /* LaunchScreen.storyboard */,
 				7B573F051C31F2C00032880D /* Info.plist */,
 			);
+			name = "H-1B";
 			path = "H1-B";
 			sourceTree = "<group>";
 		};
@@ -154,9 +155,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		7B573EF31C31F2C00032880D /* H1-B */ = {
+		7B573EF31C31F2C00032880D /* H-1B */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 7B573F1E1C31F2C00032880D /* Build configuration list for PBXNativeTarget "H1-B" */;
+			buildConfigurationList = 7B573F1E1C31F2C00032880D /* Build configuration list for PBXNativeTarget "H-1B" */;
 			buildPhases = (
 				7B573EF01C31F2C00032880D /* Sources */,
 				7B573EF11C31F2C00032880D /* Frameworks */,
@@ -166,14 +167,14 @@
 			);
 			dependencies = (
 			);
-			name = "H1-B";
+			name = "H-1B";
 			productName = "H1-B";
-			productReference = 7B573EF41C31F2C00032880D /* H1-B.app */;
+			productReference = 7B573EF41C31F2C00032880D /* H-1B.app */;
 			productType = "com.apple.product-type.application";
 		};
-		7B573F091C31F2C00032880D /* H1-BTests */ = {
+		7B573F091C31F2C00032880D /* H-1BTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 7B573F211C31F2C00032880D /* Build configuration list for PBXNativeTarget "H1-BTests" */;
+			buildConfigurationList = 7B573F211C31F2C00032880D /* Build configuration list for PBXNativeTarget "H-1BTests" */;
 			buildPhases = (
 				7B573F061C31F2C00032880D /* Sources */,
 				7B573F071C31F2C00032880D /* Frameworks */,
@@ -184,14 +185,14 @@
 			dependencies = (
 				7B573F0C1C31F2C00032880D /* PBXTargetDependency */,
 			);
-			name = "H1-BTests";
+			name = "H-1BTests";
 			productName = "H1-BTests";
-			productReference = 7B573F0A1C31F2C00032880D /* H1-BTests.xctest */;
+			productReference = 7B573F0A1C31F2C00032880D /* H-1B.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		7B573F141C31F2C00032880D /* H1-BUITests */ = {
+		7B573F141C31F2C00032880D /* H-1BUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 7B573F241C31F2C00032880D /* Build configuration list for PBXNativeTarget "H1-BUITests" */;
+			buildConfigurationList = 7B573F241C31F2C00032880D /* Build configuration list for PBXNativeTarget "H-1BUITests" */;
 			buildPhases = (
 				7B573F111C31F2C00032880D /* Sources */,
 				7B573F121C31F2C00032880D /* Frameworks */,
@@ -202,9 +203,9 @@
 			dependencies = (
 				7B573F171C31F2C00032880D /* PBXTargetDependency */,
 			);
-			name = "H1-BUITests";
+			name = "H-1BUITests";
 			productName = "H1-BUITests";
-			productReference = 7B573F151C31F2C00032880D /* H1-BUITests.xctest */;
+			productReference = 7B573F151C31F2C00032880D /* H-1B.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -230,7 +231,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 7B573EEF1C31F2C00032880D /* Build configuration list for PBXProject "H1-B" */;
+			buildConfigurationList = 7B573EEF1C31F2C00032880D /* Build configuration list for PBXProject "H-1B" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -243,9 +244,9 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				7B573EF31C31F2C00032880D /* H1-B */,
-				7B573F091C31F2C00032880D /* H1-BTests */,
-				7B573F141C31F2C00032880D /* H1-BUITests */,
+				7B573EF31C31F2C00032880D /* H-1B */,
+				7B573F091C31F2C00032880D /* H-1BTests */,
+				7B573F141C31F2C00032880D /* H-1BUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -314,12 +315,12 @@
 /* Begin PBXTargetDependency section */
 		7B573F0C1C31F2C00032880D /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 7B573EF31C31F2C00032880D /* H1-B */;
+			target = 7B573EF31C31F2C00032880D /* H-1B */;
 			targetProxy = 7B573F0B1C31F2C00032880D /* PBXContainerItemProxy */;
 		};
 		7B573F171C31F2C00032880D /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 7B573EF31C31F2C00032880D /* H1-B */;
+			target = 7B573EF31C31F2C00032880D /* H-1B */;
 			targetProxy = 7B573F161C31F2C00032880D /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -431,8 +432,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = "H1-B/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "Bond-Wong.H1-B";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = "Bond-Wong.H-1B";
+				PRODUCT_NAME = "H-1B";
 			};
 			name = Debug;
 		};
@@ -442,8 +443,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = "H1-B/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "Bond-Wong.H1-B";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = "Bond-Wong.H-1B";
+				PRODUCT_NAME = "H-1B";
 			};
 			name = Release;
 		};
@@ -454,8 +455,8 @@
 				INFOPLIST_FILE = "H1-BTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Bond-Wong.H1-BTests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/H1-B.app/H1-B";
+				PRODUCT_NAME = "H-1B";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/H-1B.app/H-1B";
 			};
 			name = Debug;
 		};
@@ -466,8 +467,8 @@
 				INFOPLIST_FILE = "H1-BTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Bond-Wong.H1-BTests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/H1-B.app/H1-B";
+				PRODUCT_NAME = "H-1B";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/H-1B.app/H-1B";
 			};
 			name = Release;
 		};
@@ -477,7 +478,7 @@
 				INFOPLIST_FILE = "H1-BUITests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Bond-Wong.H1-BUITests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "H-1B";
 				TEST_TARGET_NAME = "H1-B";
 				USES_XCTRUNNER = YES;
 			};
@@ -489,7 +490,7 @@
 				INFOPLIST_FILE = "H1-BUITests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Bond-Wong.H1-BUITests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "H-1B";
 				TEST_TARGET_NAME = "H1-B";
 				USES_XCTRUNNER = YES;
 			};
@@ -498,7 +499,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		7B573EEF1C31F2C00032880D /* Build configuration list for PBXProject "H1-B" */ = {
+		7B573EEF1C31F2C00032880D /* Build configuration list for PBXProject "H-1B" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				7B573F1C1C31F2C00032880D /* Debug */,
@@ -507,7 +508,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		7B573F1E1C31F2C00032880D /* Build configuration list for PBXNativeTarget "H1-B" */ = {
+		7B573F1E1C31F2C00032880D /* Build configuration list for PBXNativeTarget "H-1B" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				7B573F1F1C31F2C00032880D /* Debug */,
@@ -516,7 +517,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		7B573F211C31F2C00032880D /* Build configuration list for PBXNativeTarget "H1-BTests" */ = {
+		7B573F211C31F2C00032880D /* Build configuration list for PBXNativeTarget "H-1BTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				7B573F221C31F2C00032880D /* Debug */,
@@ -525,7 +526,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		7B573F241C31F2C00032880D /* Build configuration list for PBXNativeTarget "H1-BUITests" */ = {
+		7B573F241C31F2C00032880D /* Build configuration list for PBXNativeTarget "H-1BUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				7B573F251C31F2C00032880D /* Debug */,

@@ -1,6 +1,6 @@
 //
 //  EmployerDetailViewController.swift
-//  H1-B
+//  H-1B
 //
 //  Created by Bond Wong on 12/30/15.
 //  Copyright © 2015 Bond Wong. All rights reserved.
@@ -259,7 +259,7 @@ class EmployerDetailViewController: UIViewController, UITableViewDataSource, UIT
             titleLabel.leadingAnchor.constraintEqualToAnchor(dataView.leadingAnchor, constant:  rowHeight / 15).active = true
             
             let visatypeLabel = UILabel()
-            visatypeLabel.text = "Visa Type: H1-B"
+            visatypeLabel.text = "Visa Type: H-1B"
             visatypeLabel.translatesAutoresizingMaskIntoConstraints = false
             dataView.addSubview(visatypeLabel)
             visatypeLabel.topAnchor.constraintEqualToAnchor(titleLabel.bottomAnchor, constant: rowHeight / 15).active = true

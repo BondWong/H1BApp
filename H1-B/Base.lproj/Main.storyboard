@@ -32,10 +32,10 @@
             </objects>
             <point key="canvasLocation" x="750" y="-1269"/>
         </scene>
-        <!--H1-B Employers-->
+        <!--H-1B Employers-->
         <scene sceneID="Ezl-kj-i3V">
             <objects>
-                <viewController id="W4V-hb-Ng4" customClass="SearchViewController" customModule="H1_B" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="W4V-hb-Ng4" customClass="SearchViewController" customModule="H_1B" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Agr-O9-UUD"/>
                         <viewControllerLayoutGuide type="bottom" id="Eja-tc-xhi"/>
@@ -44,7 +44,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     </view>
-                    <navigationItem key="navigationItem" title="H1-B Employers" id="egF-2s-108"/>
+                    <navigationItem key="navigationItem" title="H-1B Employers" id="egF-2s-108"/>
                     <connections>
                         <segue destination="Ohf-Lf-jFH" kind="show" identifier="searchResult" id="PtL-EK-7yZ"/>
                     </connections>
@@ -56,7 +56,7 @@
         <!--History-->
         <scene sceneID="mYn-A7-OpU">
             <objects>
-                <navigationController id="WLE-Lp-0bm" customClass="HistoryViewController" customModule="H1_B" customModuleProvider="target" sceneMemberID="viewController">
+                <navigationController id="WLE-Lp-0bm" customClass="HistoryViewController" customModule="H_1B" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="History" image="History" id="tPg-sv-aGY">
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="color" keyPath="tintColor">
@@ -83,7 +83,7 @@
         <!--Records View Controller-->
         <scene sceneID="F5r-gX-FOF">
             <objects>
-                <tableViewController id="Ohf-Lf-jFH" customClass="RecordsViewController" customModule="H1_B" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="Ohf-Lf-jFH" customClass="RecordsViewController" customModule="H_1B" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="cMB-rf-02T">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -100,14 +100,14 @@
                                             <rect key="frame" x="15" y="5" width="32" height="20"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="uZM-yt-Qrn">
                                             <rect key="frame" x="15" y="25" width="41" height="14"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
@@ -131,7 +131,7 @@
         <!--Bookmark-->
         <scene sceneID="tfh-Zt-bDf">
             <objects>
-                <navigationController id="Dr6-BP-G1V" customClass="BookmarkViewController" customModule="H1_B" customModuleProvider="target" sceneMemberID="viewController">
+                <navigationController id="Dr6-BP-G1V" customClass="BookmarkViewController" customModule="H_1B" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Bookmark" image="Bookmark" id="dW1-BV-I78"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="aWS-Xh-nhb">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -173,7 +173,7 @@
         <!--About-->
         <scene sceneID="hVD-i0-4EK">
             <objects>
-                <viewController id="zg5-KN-2Sb" customClass="AboutViewController" customModule="H1_B" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="zg5-KN-2Sb" customClass="AboutViewController" customModule="H_1B" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="OfO-Vv-hX4"/>
                         <viewControllerLayoutGuide type="bottom" id="dcZ-Rd-j7W"/>
@@ -181,7 +181,7 @@
                     <view key="view" contentMode="scaleToFill" id="LvF-nP-NKg">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <navigationItem key="navigationItem" title="About" id="Zo8-jm-N6U"/>
                 </viewController>
@@ -192,7 +192,7 @@
         <!--Employer Detail View Controller-->
         <scene sceneID="udp-Mv-MNF">
             <objects>
-                <viewController id="ABR-Gt-72m" customClass="EmployerDetailViewController" customModule="H1_B" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="ABR-Gt-72m" customClass="EmployerDetailViewController" customModule="H_1B" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="gyc-XR-6Ai"/>
                         <viewControllerLayoutGuide type="bottom" id="BRZ-b3-hQd"/>
@@ -238,6 +238,6 @@
         <image name="Search" width="20" height="20"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="PtL-EK-7yZ"/>
+        <segue reference="HlO-Ln-esv"/>
     </inferredMetricsTieBreakers>
 </document>
