@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		7B573EF81C31F2C00032880D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B573EF71C31F2C00032880D /* AppDelegate.swift */; };
 		7B573EFF1C31F2C00032880D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7B573EFD1C31F2C00032880D /* Main.storyboard */; };
-		7B573F041C31F2C00032880D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7B573F021C31F2C00032880D /* LaunchScreen.storyboard */; };
 		7B573F0F1C31F2C00032880D /* H1_BTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B573F0E1C31F2C00032880D /* H1_BTests.swift */; };
 		7B573F1A1C31F2C00032880D /* H1_BUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B573F191C31F2C00032880D /* H1_BUITests.swift */; };
 		7B573F281C31F64E0032880D /* BookmarkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B573F271C31F64E0032880D /* BookmarkViewController.swift */; };
@@ -43,7 +42,6 @@
 		7B573EF41C31F2C00032880D /* H-1B.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "H-1B.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7B573EF71C31F2C00032880D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7B573EFE1C31F2C00032880D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		7B573F031C31F2C00032880D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7B573F051C31F2C00032880D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7B573F0A1C31F2C00032880D /* H-1B.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "H-1B.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7B573F0E1C31F2C00032880D /* H1_BTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = H1_BTests.swift; sourceTree = "<group>"; };
@@ -119,7 +117,6 @@
 				7B5EB0821C333250005CEA40 /* Utils */,
 				7B573EFD1C31F2C00032880D /* Main.storyboard */,
 				7B5EB0851C336F47005CEA40 /* Assets.xcassets */,
-				7B573F021C31F2C00032880D /* LaunchScreen.storyboard */,
 				7B573F051C31F2C00032880D /* Info.plist */,
 			);
 			name = "H-1B";
@@ -256,7 +253,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7B573F041C31F2C00032880D /* LaunchScreen.storyboard in Resources */,
 				7B5EB0861C336F47005CEA40 /* Assets.xcassets in Resources */,
 				7B573EFF1C31F2C00032880D /* Main.storyboard in Resources */,
 			);
@@ -332,14 +328,6 @@
 				7B573EFE1C31F2C00032880D /* Base */,
 			);
 			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		7B573F021C31F2C00032880D /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				7B573F031C31F2C00032880D /* Base */,
-			);
-			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -430,9 +418,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				INFOPLIST_FILE = "H1-B/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "Bond-Wong.H-1B";
+				PRODUCT_BUNDLE_IDENTIFIER = "Junbang-Huang.H-1B";
 				PRODUCT_NAME = "H-1B";
 			};
 			name = Debug;
@@ -441,9 +431,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				INFOPLIST_FILE = "H1-B/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "Bond-Wong.H-1B";
+				PRODUCT_BUNDLE_IDENTIFIER = "Junbang-Huang.H-1B";
 				PRODUCT_NAME = "H-1B";
 			};
 			name = Release;
