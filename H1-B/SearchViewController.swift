@@ -8,6 +8,11 @@
 
 import UIKit
 
+let protl: String = "http"
+let domain: String = "45.33.70.244"
+let version: String = "v1"
+let networkPrefix: String = "\(protl)://\(domain)/\(version)"
+
 class SearchViewController: UIViewController {
     let borderWidth:CGFloat = 1.5
     let cornerRadius:CGFloat = 7.5
@@ -216,14 +221,14 @@ class SearchViewController: UIViewController {
                 var location = inputTuple.1.text!
                 location = location.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
                 if location == "" {
-                    url = "http://localhost:8080/v1/position/title/\(upperInputText)/"
+                    url = "\(networkPrefix)/position/title/\(upperInputText)/"
                 } else {
-                    url = "http://localhost:8080/v1/position/title/\(upperInputText)/address/\(location)/"
+                    url = "\(networkPrefix)/position/title/\(upperInputText)/address/\(location)/"
                 }
             case "Employer":
-                url = "http://localhost:8080/v1/position/company/\(upperInputText)/"
+                url = "\(networkPrefix)/position/company/\(upperInputText)/"
             case "Location":
-                url = "http://localhost:8080/v1/position/address/\(upperInputText)/"
+                url = "\(networkPrefix)/position/address/\(upperInputText)/"
             default:
                 break
         }
