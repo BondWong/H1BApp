@@ -84,7 +84,8 @@ class RecordsViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        self.seletedData = data?["elements"]?[indexPath.row]!
+        let elements: [AnyObject]? = data?["elements"] as? [AnyObject]
+        self.seletedData = elements?[indexPath.row]
         self.performSegueWithIdentifier("showDetail", sender: self)
         
         if self.module == Module.SEARCH {

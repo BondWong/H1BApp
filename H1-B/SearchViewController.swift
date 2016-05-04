@@ -215,6 +215,7 @@ class SearchViewController: UIViewController {
         
         self.inputTuple.0.backgroundColor = UIColor.whiteColor()
         
+        upperInputText = upperInputText.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLPathAllowedCharacterSet())!
         url = ""
         switch self.choice {
             case "Title":
@@ -223,6 +224,7 @@ class SearchViewController: UIViewController {
                 if location == "" {
                     url = "\(networkPrefix)/position/title/\(upperInputText)/"
                 } else {
+                    location = location.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLPathAllowedCharacterSet())!
                     url = "\(networkPrefix)/position/title/\(upperInputText)/address/\(location)/"
                 }
             case "Employer":
