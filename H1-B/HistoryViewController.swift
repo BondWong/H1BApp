@@ -8,11 +8,11 @@
 
 import UIKit
 
-var history: [AnyObject] = {
-    if let his:[AnyObject] = NSUserDefaults.standardUserDefaults().arrayForKey("history") {
+var history: [CLong: [String: AnyObject]] = {
+    if let his:[CLong: [String: AnyObject]] = NSUserDefaults.standardUserDefaults().objectForKey("history") as? [CLong: [String: AnyObject]] {
         return his
     } else {
-        return []
+        return [:]
     }
 }()
 
@@ -27,11 +27,17 @@ class HistoryViewController: UINavigationController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
-        var data: [String: AnyObject] = [:]
-        data["pageNum"] = 1;
-        data["pageSize"] = 50
-        data["hasNext"] = false
-        data["elements"] = history
+        let data = CollectionResult()
+        data.pageNum = 0
+        data.pageSize = 50
+        data.hasNext = false
+        
+        var positions = [Position]()
+        for element in history.values {
+            positions.append(createPosition(element))
+        }
+        
+        data.positions = positions
         let vc = self.viewControllers.first as! RecordsViewController
         vc.module = Module.HISTORY
         vc.data = data

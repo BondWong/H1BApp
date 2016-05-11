@@ -29,7 +29,7 @@ class SearchViewController: UIViewController {
         return NSURLSession(configuration: configuration)
     }()
     var url: String!
-    var data: [String: AnyObject]?
+    var data: CollectionResult?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -249,7 +249,9 @@ class SearchViewController: UIViewController {
             }
             
             do {
-                self!.data = try NSJSONSerialization.JSONObjectWithData(data!, options:[NSJSONReadingOptions.MutableContainers]) as? [String: AnyObject]
+                let jsonData = try NSJSONSerialization.JSONObjectWithData(data!, options:[NSJSONReadingOptions.MutableContainers]) as! [String: AnyObject]
+                
+                self!.data = toCollectionResult(jsonData)
             } catch let error as NSError{
                 print("json error: \(error.localizedDescription)")
                 return

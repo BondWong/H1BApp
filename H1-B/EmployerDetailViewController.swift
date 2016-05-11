@@ -13,7 +13,7 @@ class EmployerDetailViewController: UIViewController, UITableViewDataSource, UIT
     var borderColor: UIColor!
     var indicatorViews: (UIView, UIView)!
     var mainViews: (UITableView, UIView)!
-    var data: AnyObject!
+    var position: Position?
     
     let rowHeight = UIScreen.mainScreen().bounds.height * 0.4 / 4
 
@@ -27,13 +27,8 @@ class EmployerDetailViewController: UIViewController, UITableViewDataSource, UIT
         
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "Bookmark-fill"), style: .Done, target: self, action: #selector(EmployerDetailViewController.bookmark(_:)))
         
-        let dataId = self.data["id"] as! CLong
-        for bm in bookmarklist {
-            let bmId = bm["id"] as! CLong
-            if bmId == dataId {
-                self.navigationItem.rightBarButtonItem!.tintColor = UIColor(patternImage: UIImage(named: "Bookmark-fill")!)
-                break
-            }
+        if bookmarklist[position!.id] != nil {
+            self.navigationItem.rightBarButtonItem!.tintColor = UIColor(patternImage: UIImage(named: "Bookmark-fill")!)
         }
         
         let segmentView = UIView()
@@ -192,16 +187,16 @@ class EmployerDetailViewController: UIViewController, UITableViewDataSource, UIT
         switch indexPath.row {
         case 0:
             itemLabel.text = "Employer Name"
-            dataLabel.text = data["company"]?!["name"] as? String
+            dataLabel.text = position!.company.name
         case 1:
             itemLabel.text = "Contact"
-            dataLabel.text = data["company"]?!["contact"] as? String
+            dataLabel.text = position!.company.contact
         case 2:
             itemLabel.text = "Street"
-            dataLabel.text = data["company"]?!["address"]?!["street"] as? String
+            dataLabel.text = position!.company.address.street
         case 3:
             itemLabel.text = "City, State and Zipode"
-            dataLabel.text = "\((data["company"]?!["address"]?!["city"]!!)!) \((data["company"]?!["address"]?!["state"]!!)!) \((data["company"]?!["address"]?!["zipCode"]!!)!)"
+            dataLabel.text = "\(position!.company.address.city) \(position!.company.address.state) \(position!.company.address.zipCode)"
         default:
             break
         }
@@ -252,7 +247,7 @@ class EmployerDetailViewController: UIViewController, UITableViewDataSource, UIT
             
             
             let titleLabel = UILabel()
-            titleLabel.text = data["name"] as? String
+            titleLabel.text = position!.name
             titleLabel.translatesAutoresizingMaskIntoConstraints = false
             dataView.addSubview(titleLabel)
             titleLabel.topAnchor.constraintEqualToAnchor(dataView.topAnchor, constant: rowHeight / 15).active = true
@@ -266,14 +261,14 @@ class EmployerDetailViewController: UIViewController, UITableViewDataSource, UIT
             visatypeLabel.leadingAnchor.constraintEqualToAnchor(titleLabel.leadingAnchor).active = true
             
             let wageLabel = UILabel()
-            wageLabel.text = "Salary: \(data["salary"]!!)"
+            wageLabel.text = "Salary: \(position!.salary)"
             wageLabel.translatesAutoresizingMaskIntoConstraints = false
             dataView.addSubview(wageLabel)
             wageLabel.topAnchor.constraintEqualToAnchor(visatypeLabel.bottomAnchor, constant: rowHeight / 15).active = true
             wageLabel.leadingAnchor.constraintEqualToAnchor(visatypeLabel.leadingAnchor).active = true
             
             let workLocationLabel = UILabel()
-            workLocationLabel.text = "Work Location: \((data["location"]?!["city"]!)!) \((data["location"]?!["state"]!)!)"
+            workLocationLabel.text = "Work Location: \(position!.address.city) \(position!.address.state)"
             workLocationLabel.translatesAutoresizingMaskIntoConstraints = false
             dataView.addSubview(workLocationLabel)
             workLocationLabel.topAnchor.constraintEqualToAnchor(wageLabel.bottomAnchor, constant: rowHeight / 15).active = true
@@ -286,31 +281,15 @@ class EmployerDetailViewController: UIViewController, UITableViewDataSource, UIT
         if barButtonItem.tintColor == nil {
             barButtonItem.tintColor = UIColor(patternImage: UIImage(named: "Bookmark-fill")!)
             
-            let dataId = self.data["id"] as! CLong
-            for ele in bookmarklist {
-                let eleId = ele["id"] as! CLong
-                if eleId == dataId {
-                    return
-                }
-            }
-            bookmarklist.append(self.data as! ([String : AnyObject]))
+            bookmarklist[position!.id] = toDict(position!)
             if bookmarklist.count > 50 {
-                bookmarklist.removeFirst()
+                bookmarklist.removeAtIndex(bookmarklist.startIndex)
             }
         }
         else {
             barButtonItem.tintColor = nil
             
-            let dataId = self.data["id"] as! CLong
-            var index = 0
-            for ele in bookmarklist {
-                let eleId = ele["id"] as! CLong
-                if eleId == dataId {
-                    bookmarklist.removeAtIndex(index)
-                    break
-                }
-                index += 1
-            }
+            bookmarklist.removeValueForKey(position!.id)
         }
     }
 

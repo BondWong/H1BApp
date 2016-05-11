@@ -17,8 +17,8 @@ class RecordsViewController: UITableViewController {
     }()
     var url: String!
     var module: Module!
-    var data: [String: AnyObject]?
-    var seletedData: AnyObject!
+    var data: CollectionResult?
+    var selectedPosition: Position?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,7 +53,7 @@ class RecordsViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if let d = data {
-            return d["elements"]!.count
+            return d.positions.count
         } else {
             return 0
         }
@@ -71,44 +71,38 @@ class RecordsViewController: UITableViewController {
             cell.textLabel?.text = ""
         }
 
-        let title = (data?["elements"]?[indexPath.row]?["name"])!
-        cell.textLabel?.text = "\(title!)"
-        let state = (data?["elements"]?[indexPath.row]?["location"]?!["state"])!
-        let city = (data?["elements"]?[indexPath.row]?["location"]?!["city"])!
-        let company = (data?["elements"]?[indexPath.row]?["company"]?!["name"])!
-        cell.detailTextLabel?.text = "\(company!) \(state!) \(city!)"
-        
         cell.textLabel?.lineBreakMode = NSLineBreakMode.ByWordWrapping
         cell.textLabel?.numberOfLines = 0
+        
+        let position: Position = data!.positions[indexPath.row]
+        
+        cell.textLabel?.text = "\(position.name)"
+        cell.detailTextLabel?.text = "\(position.company.name) \(position.address.state) \(position.address.city)"
+        
         return cell
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let elements: [AnyObject]? = data?["elements"] as? [AnyObject]
-        self.seletedData = elements?[indexPath.row]
+        self.selectedPosition = data?.positions[indexPath.row]
         self.performSegueWithIdentifier("showDetail", sender: self)
         
         if self.module == Module.SEARCH {
-            let selectedId = self.seletedData["id"] as! CLong
-            for ele in history {
-                let eleId = ele["id"] as! CLong
-                if eleId == selectedId {
-                    return
-                }
+            if history[self.selectedPosition!.id] == nil {
+                history[self.selectedPosition!.id] = toDict(self.selectedPosition!)
             }
-            history.append(self.seletedData)
+            
             if history.count > 50 {
-                history.removeFirst()
+                history.removeAtIndex(history.startIndex)
             }
         }
         
     }
     
     override func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
-        let element: [[String: AnyObject]] = self.data!["elements"] as! [[String: AnyObject]]
-        let hasNext = self.data?["hasNext"] as! Int
-        if self.module == Module.SEARCH && indexPath.row + 1 == element.count && hasNext == 1 {
-            let task = session.dataTaskWithURL(NSURL(string: url + "\(element.count)")!, completionHandler: {[weak self](data: NSData?, response: NSURLResponse?, error: NSError?) in
+        let positions: [Position] = self.data!.positions
+        let hasNext = self.data!.hasNext
+        if self.module == Module.SEARCH && indexPath.row + 1 == positions.count && hasNext {
+            let task = session.dataTaskWithURL(NSURL(string: url + "\(positions.count)")!, completionHandler: {[weak self](data: NSData?, response: NSURLResponse?, error: NSError?) in
                 if error != nil {
                     print(error?.userInfo)
                     return
@@ -122,12 +116,11 @@ class RecordsViewController: UITableViewController {
                 }
                 
                 do {
-                    var newData = try NSJSONSerialization.JSONObjectWithData(data!, options:[NSJSONReadingOptions.MutableContainers]) as? [String: AnyObject]
-                    var originalElements: [[String: AnyObject]] = self?.data!["elements"] as! [[String: AnyObject]]
-                    let newElements: [[String: AnyObject]] = newData!["elements"] as! [[String: AnyObject]]
-                    originalElements.appendContentsOf(newElements)
-                    newData!["elements"] = originalElements
-                    self?.data  = newData
+                    let newData = try NSJSONSerialization.JSONObjectWithData(data!, options:[NSJSONReadingOptions.MutableContainers]) as! [String: AnyObject]
+                    
+                    let newCollection = toCollectionResult(newData)
+                    newCollection.positions.appendContentsOf(self!.data!.positions)
+                    self?.data? = newCollection
                     
                     dispatch_async(dispatch_get_main_queue(), {
                         self?.tableView.reloadData()
@@ -150,7 +143,7 @@ class RecordsViewController: UITableViewController {
         // Pass the selected object to the new view controller.
         
         let vc: EmployerDetailViewController = segue.destinationViewController as! EmployerDetailViewController
-        vc.data = self.seletedData
+        vc.position = self.selectedPosition
         vc.module = self.module
     }
     

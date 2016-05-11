@@ -8,11 +8,11 @@
 
 import UIKit
 
-var bookmarklist: [[String: AnyObject]] = {
-    if let bm:[[String: AnyObject]] = NSUserDefaults.standardUserDefaults().arrayForKey("bookmark") as? [[String: AnyObject]]{
+var bookmarklist: [CLong: [String: AnyObject]] = {
+    if let bm:[CLong: [String: AnyObject]] = NSUserDefaults.standardUserDefaults().objectForKey("bookmark") as? [CLong: [String: AnyObject]]{
         return bm
     } else {
-        return []
+        return [:]
     }
 }()
 
@@ -27,11 +27,18 @@ class BookmarkViewController: UINavigationController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
-        var data: [String: AnyObject] = [:]
-        data["pageNum"] = 1;
-        data["pageSize"] = 50
-        data["hasNext"] = false
-        data["elements"] = bookmarklist
+        let data: CollectionResult = CollectionResult()
+        data.hasNext = false
+        data.pageNum = 0
+        data.pageSize = bookmarklist.count
+        
+        var positions = [Position]()
+        for element in bookmarklist.values {
+            positions.append(createPosition(element))
+        }
+        
+        data.positions = positions
+        
         let vc:RecordsViewController =  self.viewControllers.first as! RecordsViewController
         vc.module = .BOOKMARK
         vc.data = data
