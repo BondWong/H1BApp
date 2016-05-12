@@ -15,7 +15,7 @@ class EmployerDetailViewController: UIViewController, UITableViewDataSource, UIT
     var mainViews: (UITableView, UIView)!
     var position: Position?
     
-    let rowHeight = UIScreen.mainScreen().bounds.height * 0.4 / 4
+    let rowHeight = UIScreen.mainScreen().bounds.height * 0.5 / 4
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -119,7 +119,7 @@ class EmployerDetailViewController: UIViewController, UITableViewDataSource, UIT
         aboutView.topAnchor.constraintEqualToAnchor(segmentView.bottomAnchor, constant: UIScreen.mainScreen().bounds.height / 50).active = true
         aboutView.widthAnchor.constraintEqualToAnchor(self.view.widthAnchor, multiplier: 0.9).active = true
         aboutView.centerXAnchor.constraintEqualToAnchor(self.view.centerXAnchor).active = true
-        aboutView.heightAnchor.constraintEqualToAnchor(self.view.heightAnchor, multiplier: 0.4).active = true
+        aboutView.heightAnchor.constraintEqualToAnchor(self.view.heightAnchor, multiplier: 0.5).active = true
         
         
         let sponsoredTitlesView = UIScrollView()
@@ -177,12 +177,16 @@ class EmployerDetailViewController: UIViewController, UITableViewDataSource, UIT
         cell.contentView.addSubview(itemLabel)
         itemLabel.topAnchor.constraintEqualToAnchor(cell.contentView.topAnchor, constant: rowHeight/10).active = true
         itemLabel.leadingAnchor.constraintEqualToAnchor(seperator.leadingAnchor).active = true
+        itemLabel.widthAnchor.constraintEqualToAnchor(seperator.widthAnchor).active = true
         
         let dataLabel = UILabel()
-        dataLabel.translatesAutoresizingMaskIntoConstraints = false
         cell.contentView.addSubview(dataLabel)
+        dataLabel.translatesAutoresizingMaskIntoConstraints = false
         dataLabel.bottomAnchor.constraintEqualToAnchor(cell.bottomAnchor, constant: -rowHeight/10).active = true
-        dataLabel.leadingAnchor.constraintEqualToAnchor(itemLabel.leadingAnchor).active = true
+        dataLabel.leadingAnchor.constraintEqualToAnchor(seperator.leadingAnchor).active = true
+        dataLabel.widthAnchor.constraintEqualToAnchor(seperator.widthAnchor).active = true
+        dataLabel.lineBreakMode = .ByWordWrapping
+        dataLabel.numberOfLines = 0
         
         switch indexPath.row {
         case 0:
@@ -200,7 +204,6 @@ class EmployerDetailViewController: UIViewController, UITableViewDataSource, UIT
         default:
             break
         }
-        dataLabel.sizeToFit()
         
         return cell
     }
@@ -247,11 +250,14 @@ class EmployerDetailViewController: UIViewController, UITableViewDataSource, UIT
             
             
             let titleLabel = UILabel()
+            titleLabel.lineBreakMode = .ByWordWrapping
+            titleLabel.numberOfLines = 0
             titleLabel.text = position!.name
             titleLabel.translatesAutoresizingMaskIntoConstraints = false
             dataView.addSubview(titleLabel)
             titleLabel.topAnchor.constraintEqualToAnchor(dataView.topAnchor, constant: rowHeight / 15).active = true
             titleLabel.leadingAnchor.constraintEqualToAnchor(dataView.leadingAnchor, constant:  rowHeight / 15).active = true
+            titleLabel.trailingAnchor.constraintEqualToAnchor(dataView.trailingAnchor, constant: -rowHeight / 15).active = true
             
             let visatypeLabel = UILabel()
             visatypeLabel.text = "Visa Type: H-1B"
@@ -268,11 +274,14 @@ class EmployerDetailViewController: UIViewController, UITableViewDataSource, UIT
             wageLabel.leadingAnchor.constraintEqualToAnchor(visatypeLabel.leadingAnchor).active = true
             
             let workLocationLabel = UILabel()
+            workLocationLabel.lineBreakMode = .ByWordWrapping
+            workLocationLabel.numberOfLines = 0
             workLocationLabel.text = "Work Location: \(position!.address.city) \(position!.address.state)"
             workLocationLabel.translatesAutoresizingMaskIntoConstraints = false
             dataView.addSubview(workLocationLabel)
             workLocationLabel.topAnchor.constraintEqualToAnchor(wageLabel.bottomAnchor, constant: rowHeight / 15).active = true
             workLocationLabel.leadingAnchor.constraintEqualToAnchor(wageLabel.leadingAnchor).active = true
+            workLocationLabel.trailingAnchor.constraintEqualToAnchor(dataView.trailingAnchor, constant: -rowHeight / 15).active = true
             
         }
     }
