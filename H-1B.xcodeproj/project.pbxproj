@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		7B20C25C1CE3D201001E188A /* Domain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B20C25B1CE3D201001E188A /* Domain.swift */; };
+		7B20C25F1CE3F07E001E188A /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B20C25E1CE3F07E001E188A /* Extension.swift */; };
+		7B20C2611CE3F0A5001E188A /* Enum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B20C2601CE3F0A5001E188A /* Enum.swift */; };
+		7B20C2641CE3F5C5001E188A /* LocalDataDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B20C2631CE3F5C5001E188A /* LocalDataDelegate.swift */; };
 		7B573EF81C31F2C00032880D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B573EF71C31F2C00032880D /* AppDelegate.swift */; };
 		7B573EFF1C31F2C00032880D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7B573EFD1C31F2C00032880D /* Main.storyboard */; };
 		7B573F0F1C31F2C00032880D /* H1_BTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B573F0E1C31F2C00032880D /* H1_BTests.swift */; };
@@ -41,6 +44,9 @@
 
 /* Begin PBXFileReference section */
 		7B20C25B1CE3D201001E188A /* Domain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Domain.swift; sourceTree = "<group>"; };
+		7B20C25E1CE3F07E001E188A /* Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
+		7B20C2601CE3F0A5001E188A /* Enum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Enum.swift; sourceTree = "<group>"; };
+		7B20C2631CE3F5C5001E188A /* LocalDataDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalDataDelegate.swift; sourceTree = "<group>"; };
 		7B573EF41C31F2C00032880D /* H-1B.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "H-1B.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7B573EF71C31F2C00032880D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7B573EFE1C31F2C00032880D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -129,6 +135,7 @@
 				7B573EFD1C31F2C00032880D /* Main.storyboard */,
 				7B5EB0851C336F47005CEA40 /* Assets.xcassets */,
 				7B573F051C31F2C00032880D /* Info.plist */,
+				7B20C2631CE3F5C5001E188A /* LocalDataDelegate.swift */,
 			);
 			name = "H-1B";
 			path = "H1-B";
@@ -156,6 +163,8 @@
 			isa = PBXGroup;
 			children = (
 				7B7EB9BE1C353FCC00B43492 /* Utils.swift */,
+				7B20C25E1CE3F07E001E188A /* Extension.swift */,
+				7B20C2601CE3F0A5001E188A /* Enum.swift */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -295,10 +304,13 @@
 				7B573F281C31F64E0032880D /* BookmarkViewController.swift in Sources */,
 				7B7EB9BF1C353FCC00B43492 /* Utils.swift in Sources */,
 				7BFC684C1C354A9B00DFAC36 /* AboutViewController.swift in Sources */,
+				7B20C2611CE3F0A5001E188A /* Enum.swift in Sources */,
 				7BB8562A1C346C8300ED4BC6 /* EmployerDetailViewController.swift in Sources */,
+				7B20C25F1CE3F07E001E188A /* Extension.swift in Sources */,
 				7B573EF81C31F2C00032880D /* AppDelegate.swift in Sources */,
 				7BFC684A1C3544D900DFAC36 /* HistoryViewController.swift in Sources */,
 				7B20C25C1CE3D201001E188A /* Domain.swift in Sources */,
+				7B20C2641CE3F5C5001E188A /* LocalDataDelegate.swift in Sources */,
 				7B7EB9C11C3540EC00B43492 /* RecordsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -16,7 +16,7 @@ var bookmarklist: [CLong: [String: AnyObject]] = {
     }
 }()
 
-class BookmarkViewController: UINavigationController {
+class BookmarkViewController: UINavigationController, LocalDataDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,6 +27,20 @@ class BookmarkViewController: UINavigationController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
+        let data: CollectionResult = getData() as! CollectionResult
+        
+        let vc:RecordsViewController =  self.viewControllers.first as! RecordsViewController
+        vc.module = .BOOKMARK
+        vc.delegate = self
+        vc.data = data
+    }
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+    func getData() -> AnyObject {
         let data: CollectionResult = CollectionResult()
         data.hasNext = false
         data.pageNum = 0
@@ -39,14 +53,7 @@ class BookmarkViewController: UINavigationController {
         
         data.positions = positions
         
-        let vc:RecordsViewController =  self.viewControllers.first as! RecordsViewController
-        vc.module = .BOOKMARK
-        vc.data = data
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        return data
     }
     
     /*

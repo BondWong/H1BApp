@@ -282,14 +282,16 @@ class EmployerDetailViewController: UIViewController, UITableViewDataSource, UIT
             barButtonItem.tintColor = UIColor(patternImage: UIImage(named: "Bookmark-fill")!)
             
             bookmarklist[position!.id] = toDict(position!)
+            NSNotificationCenter.defaultCenter().postNotificationName(Event.ADD_BOOKMARK.rawValue, object: self)
             if bookmarklist.count > 50 {
                 bookmarklist.removeAtIndex(bookmarklist.startIndex)
+                NSNotificationCenter.defaultCenter().postNotificationName(Event.REMOVE_BOOKMARK.rawValue, object: self)
             }
         }
         else {
             barButtonItem.tintColor = nil
-            
             bookmarklist.removeValueForKey(position!.id)
+            NSNotificationCenter.defaultCenter().postNotificationName(Event.REMOVE_BOOKMARK.rawValue, object: self)
         }
     }
 

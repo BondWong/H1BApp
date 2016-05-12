@@ -20,6 +20,12 @@ class RecordsViewController: UITableViewController {
     var data: CollectionResult?
     var selectedPosition: Position?
     
+    var delegate: LocalDataDelegate!
+    
+    deinit{
+        NSNotificationCenter.defaultCenter().removeObserver(self)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -29,10 +35,14 @@ class RecordsViewController: UITableViewController {
         switch module {
         case let m where m == Module.BOOKMARK:
             self.navigationItem.title = "Bookmark"
+            NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(RecordsViewController.updateData), name: Event.ADD_BOOKMARK.rawValue, object: nil)
+            NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(RecordsViewController.updateData), name: Event.REMOVE_BOOKMARK.rawValue, object: nil)
         case let m where m == Module.SEARCH:
             self.navigationItem.title = "Records"
         default:
             self.navigationItem.title = "History"
+            NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(RecordsViewController.updateData), name: Event.ADD_HISTORY.rawValue, object: nil)
+            NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(RecordsViewController.updateData), name: Event.REMOVE_HISTORY.rawValue, object: nil)
         }
         
     }
@@ -89,10 +99,12 @@ class RecordsViewController: UITableViewController {
         if self.module == Module.SEARCH {
             if history[self.selectedPosition!.id] == nil {
                 history[self.selectedPosition!.id] = toDict(self.selectedPosition!)
+                NSNotificationCenter.defaultCenter().postNotificationName(Event.ADD_HISTORY.rawValue, object: self)
             }
             
             if history.count > 50 {
                 history.removeAtIndex(history.startIndex)
+                NSNotificationCenter.defaultCenter().postNotificationName(Event.REMOVE_HISTORY.rawValue, object: self)
             }
         }
         
@@ -133,6 +145,11 @@ class RecordsViewController: UITableViewController {
             })
             task.resume()
         }
+    }
+    
+    func updateData() {
+        self.data = self.delegate.getData() as? CollectionResult
+        self.tableView.reloadData()
     }
     
     // MARK: - Navigation

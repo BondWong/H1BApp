@@ -16,7 +16,7 @@ var history: [CLong: [String: AnyObject]] = {
     }
 }()
 
-class HistoryViewController: UINavigationController {
+class HistoryViewController: UINavigationController, LocalDataDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,6 +27,19 @@ class HistoryViewController: UINavigationController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
+        let data = getData() as! CollectionResult
+        let vc = self.viewControllers.first as! RecordsViewController
+        vc.module = Module.HISTORY
+        vc.delegate = self
+        vc.data = data
+    }
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+    func getData() -> AnyObject {
         let data = CollectionResult()
         data.pageNum = 0
         data.pageSize = 50
@@ -38,16 +51,9 @@ class HistoryViewController: UINavigationController {
         }
         
         data.positions = positions
-        let vc = self.viewControllers.first as! RecordsViewController
-        vc.module = Module.HISTORY
-        vc.data = data
+        
+        return data
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
 
     /*
     // MARK: - Navigation
