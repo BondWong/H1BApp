@@ -30,6 +30,19 @@ class SearchViewController: UIViewController {
     }()
     var url: String!
     var data: CollectionResult?
+    
+    var heightFactor:CGFloat {
+        switch(getDeviceModel()) {
+        case .IPHONE4_4s:
+            return 1/15
+        case .IPHONE5_5s:
+            return 1/15
+        case .IPHONE6_6s:
+            return 1/18
+        case .IPHONE6p_6ps:
+            return 1/20
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -85,7 +98,7 @@ class SearchViewController: UIViewController {
         optionsView.topAnchor.constraintEqualToAnchor(contentView.topAnchor, constant: (UIScreen.mainScreen().bounds.height-64)/5).active = true
         optionsView.widthAnchor.constraintEqualToAnchor(contentView.widthAnchor, multiplier: 0.8).active = true
         optionsView.centerXAnchor.constraintEqualToAnchor(contentView.centerXAnchor).active = true
-        optionsView.heightAnchor.constraintEqualToAnchor(contentView.heightAnchor, multiplier: 1/20).active = true
+        optionsView.heightAnchor.constraintEqualToAnchor(contentView.heightAnchor, multiplier: heightFactor).active = true
         
         let upperInput = UITextField()
         upperInput.backgroundColor = UIColor.whiteColor()

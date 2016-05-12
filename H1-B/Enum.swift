@@ -20,3 +20,10 @@ enum Event: String {
     case ADD_HISTORY = "add_history"
     case REMOVE_HISTORY = "remove_history"
 }
+
+enum DeviceModel {
+    case IPHONE4_4s
+    case IPHONE5_5s
+    case IPHONE6_6s
+    case IPHONE6p_6ps
+}

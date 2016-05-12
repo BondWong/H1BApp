@@ -70,7 +70,16 @@ class RecordsViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return UIScreen.mainScreen().bounds.height / 10
+        switch(getDeviceModel()) {
+        case .IPHONE4_4s:
+            return UIScreen.mainScreen().bounds.height / 8
+        case .IPHONE5_5s:
+            return UIScreen.mainScreen().bounds.height / 8
+        case .IPHONE6_6s:
+            return UIScreen.mainScreen().bounds.height / 10
+        case .IPHONE6p_6ps:
+            return UIScreen.mainScreen().bounds.height / 10
+        }
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {

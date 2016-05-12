@@ -7,6 +7,24 @@
 //
 
 import Foundation
+import UIKit
+
+func getDeviceModel() -> DeviceModel {
+    let height = UIScreen.mainScreen().bounds.height
+    
+    switch(height) {
+    case 480.0:
+        return DeviceModel.IPHONE4_4s
+    case 568.0:
+        return DeviceModel.IPHONE5_5s
+    case 667.0:
+        return DeviceModel.IPHONE6_6s
+    case 736.0:
+        return DeviceModel.IPHONE6p_6ps
+    default:
+        return DeviceModel.IPHONE6p_6ps
+    }
+}
 
 func createPosition(data: [String: AnyObject]) -> Position {
     let companyAddress = Address()

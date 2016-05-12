@@ -15,7 +15,34 @@ class EmployerDetailViewController: UIViewController, UITableViewDataSource, UIT
     var mainViews: (UITableView, UIView)!
     var position: Position?
     
-    let rowHeight = UIScreen.mainScreen().bounds.height * 0.5 / 4
+    var heightFactor:CGFloat {
+        switch(getDeviceModel()) {
+        case .IPHONE4_4s:
+            return 0.7
+        case .IPHONE5_5s:
+            return 0.6
+        case .IPHONE6_6s:
+            return 0.5
+        case .IPHONE6p_6ps:
+            return 0.5
+        }
+    }
+    var rowHeight: CGFloat {
+        return UIScreen.mainScreen().bounds.height * heightFactor / 4
+    }
+    
+    var dataViewHeight: CGFloat {
+        switch(getDeviceModel()) {
+        case .IPHONE4_4s:
+            return UIScreen.mainScreen().bounds.height / 4.5
+        case .IPHONE5_5s:
+            return UIScreen.mainScreen().bounds.height / 4.5
+        case .IPHONE6_6s:
+            return UIScreen.mainScreen().bounds.height / 5
+        case .IPHONE6p_6ps:
+            return UIScreen.mainScreen().bounds.height / 5
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -119,7 +146,7 @@ class EmployerDetailViewController: UIViewController, UITableViewDataSource, UIT
         aboutView.topAnchor.constraintEqualToAnchor(segmentView.bottomAnchor, constant: UIScreen.mainScreen().bounds.height / 50).active = true
         aboutView.widthAnchor.constraintEqualToAnchor(self.view.widthAnchor, multiplier: 0.9).active = true
         aboutView.centerXAnchor.constraintEqualToAnchor(self.view.centerXAnchor).active = true
-        aboutView.heightAnchor.constraintEqualToAnchor(self.view.heightAnchor, multiplier: 0.5).active = true
+        aboutView.heightAnchor.constraintEqualToAnchor(self.view.heightAnchor, multiplier: heightFactor).active = true
         
         
         let sponsoredTitlesView = UIScrollView()
@@ -242,11 +269,11 @@ class EmployerDetailViewController: UIViewController, UITableViewDataSource, UIT
             dataView.layer.borderWidth = 1
             dataView.translatesAutoresizingMaskIntoConstraints = false
             sponsoredTitlesView.addSubview(dataView)
-            dataView.topAnchor.constraintEqualToAnchor(sponsoredTitlesView.topAnchor, constant: CGFloat(i) * (UIScreen.mainScreen().bounds.height / 5 + UIScreen.mainScreen().bounds.height / 5 / 5)).active = true
+            dataView.topAnchor.constraintEqualToAnchor(sponsoredTitlesView.topAnchor, constant: CGFloat(i) * (dataViewHeight + dataViewHeight / 5)).active = true
             dataView.widthAnchor.constraintEqualToAnchor(sponsoredTitlesView.widthAnchor).active = true
             dataView.centerXAnchor.constraintEqualToAnchor(sponsoredTitlesView.centerXAnchor).active = true
-            dataView.heightAnchor.constraintEqualToConstant(UIScreen.mainScreen().bounds.height / 5).active = true
-            sponsoredTitlesView.contentSize = CGSize(width: UIScreen.mainScreen().bounds.width * 0.9, height: CGFloat(i + 1) * (UIScreen.mainScreen().bounds.height / 5 + UIScreen.mainScreen().bounds.height / 5 / 5))
+            dataView.heightAnchor.constraintEqualToConstant(dataViewHeight).active = true
+            sponsoredTitlesView.contentSize = CGSize(width: UIScreen.mainScreen().bounds.width * 0.9, height: CGFloat(i + 1) * dataViewHeight + dataViewHeight / 5)
             
             
             let titleLabel = UILabel()
