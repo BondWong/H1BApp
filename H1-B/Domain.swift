@@ -35,7 +35,7 @@
 import Foundation
 
 class Position: NSObject {
-    var id: CLong
+    var id: String
     var name: String
     var salary: String
     var visaType: String
@@ -43,7 +43,7 @@ class Position: NSObject {
     var company: Company
     
     override init() {
-        id = 0
+        id = ""
         name = ""
         salary = ""
         visaType = ""

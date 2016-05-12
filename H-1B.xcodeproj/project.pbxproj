@@ -123,7 +123,6 @@
 		7B573EF61C31F2C00032880D /* H-1B */ = {
 			isa = PBXGroup;
 			children = (
-				7B20C25A1CE3D1F4001E188A /* Domain Model */,
 				7B573EF71C31F2C00032880D /* AppDelegate.swift */,
 				7B573F2B1C320CDF0032880D /* SearchViewController.swift */,
 				7BFC68491C3544D900DFAC36 /* HistoryViewController.swift */,
@@ -131,11 +130,12 @@
 				7BFC684B1C354A9B00DFAC36 /* AboutViewController.swift */,
 				7B7EB9C01C3540EC00B43492 /* RecordsViewController.swift */,
 				7BB856291C346C8300ED4BC6 /* EmployerDetailViewController.swift */,
+				7B20C25A1CE3D1F4001E188A /* Domain Model */,
 				7B5EB0821C333250005CEA40 /* Utils */,
+				7B20C2631CE3F5C5001E188A /* LocalDataDelegate.swift */,
 				7B573EFD1C31F2C00032880D /* Main.storyboard */,
 				7B5EB0851C336F47005CEA40 /* Assets.xcassets */,
 				7B573F051C31F2C00032880D /* Info.plist */,
-				7B20C2631CE3F5C5001E188A /* LocalDataDelegate.swift */,
 			);
 			name = "H-1B";
 			path = "H1-B";

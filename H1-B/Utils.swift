@@ -35,8 +35,8 @@ func createPosition(data: [String: AnyObject]) -> Position {
     positionAddress.zipCode = positionAddressData["zipCode"] as! String
     
     let position = Position()
-    
-    position.id = data["id"] as! CLong
+
+    position.id = "\(data["id"]!)"
     position.name = data["name"] as! String
     position.salary = data["salary"] as! String
     position.visaType = data["visaType"] as! String

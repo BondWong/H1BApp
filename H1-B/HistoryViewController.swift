@@ -8,10 +8,23 @@
 
 import UIKit
 
-var history: [CLong: [String: AnyObject]] = {
-    if let his:[CLong: [String: AnyObject]] = NSUserDefaults.standardUserDefaults().objectForKey("history") as? [CLong: [String: AnyObject]] {
+var history: [String: [String: AnyObject]] = {
+    guard let jsonStr: String = NSUserDefaults.standardUserDefaults().objectForKey("history") as? String else {
+        return [:]
+    }
+    do {
+        
+        guard let jsonData = jsonStr.dataUsingEncoding(NSUTF8StringEncoding) else {
+            return [:]
+        }
+        
+        guard let his = try NSJSONSerialization.JSONObjectWithData(jsonData, options: []) as? [String: [String: AnyObject]]else {
+            return [:]
+        }
+        
         return his
-    } else {
+    } catch let error as NSError {
+        print(error.localizedDescription)
         return [:]
     }
 }()
@@ -53,6 +66,18 @@ class HistoryViewController: UINavigationController, LocalDataDelegate {
         data.positions = positions
         
         return data
+    }
+    
+    func synchronize() {
+        do {
+            let jsonHistory = try NSJSONSerialization.dataWithJSONObject(history, options: [])
+            let historyJsonString = NSString(data: jsonHistory, encoding: NSUTF8StringEncoding)
+            
+            NSUserDefaults.standardUserDefaults().setValue(historyJsonString, forKey: "history")
+            NSUserDefaults.standardUserDefaults().synchronize()
+        } catch let error as NSError {
+            print(error.localizedDescription)
+        }
     }
 
     /*

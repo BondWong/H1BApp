@@ -150,6 +150,7 @@ class RecordsViewController: UITableViewController {
     func updateData() {
         self.data = self.delegate.getData() as? CollectionResult
         self.tableView.reloadData()
+        self.delegate.synchronize()
     }
     
     // MARK: - Navigation

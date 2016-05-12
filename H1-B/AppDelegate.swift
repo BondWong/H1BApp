@@ -18,6 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         application.setStatusBarStyle(.LightContent, animated: false)
         UINavigationBar.appearance().tintColor = UIColor.whiteColor()
         UITabBar.appearance().tintColor = UIColor.blackColor()
+        
         return true
     }
 
@@ -41,9 +42,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillTerminate(application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
-        NSUserDefaults.standardUserDefaults().setObject(history, forKey: "history")
-        NSUserDefaults.standardUserDefaults().setObject(bookmarklist, forKey: "bookmark")
-        NSUserDefaults.standardUserDefaults().synchronize()
+        
     }
 
 

@@ -8,12 +8,26 @@
 
 import UIKit
 
-var bookmarklist: [CLong: [String: AnyObject]] = {
-    if let bm:[CLong: [String: AnyObject]] = NSUserDefaults.standardUserDefaults().objectForKey("bookmark") as? [CLong: [String: AnyObject]]{
-        return bm
-    } else {
+var bookmarklist: [String: [String: AnyObject]] = {
+    guard let jsonStr = NSUserDefaults.standardUserDefaults().objectForKey("bookmark") as? String else {
         return [:]
     }
+    
+    guard let jsonData = jsonStr.dataUsingEncoding(NSUTF8StringEncoding) else {
+        return [:]
+    }
+    
+    do {
+        guard let bookmark = try NSJSONSerialization.JSONObjectWithData(jsonData, options: []) as? [String: [String: AnyObject]]else {
+            return [:]
+        }
+        
+        return bookmark
+    } catch let e as NSError{
+        print(e.localizedDescription)
+        return [:]
+    }
+    
 }()
 
 class BookmarkViewController: UINavigationController, LocalDataDelegate {
@@ -54,6 +68,18 @@ class BookmarkViewController: UINavigationController, LocalDataDelegate {
         data.positions = positions
         
         return data
+    }
+    
+    func synchronize() {
+        do {
+            let jsonBookmarklist = try NSJSONSerialization.dataWithJSONObject(bookmarklist, options: [])
+            let bookmarkListJsonString = NSString(data: jsonBookmarklist, encoding: NSUTF8StringEncoding)
+            
+            NSUserDefaults.standardUserDefaults().setValue(bookmarkListJsonString, forKey: "bookmark")
+            NSUserDefaults.standardUserDefaults().synchronize()
+        } catch let error as NSError {
+            print(error.localizedDescription)
+        }
     }
     
     /*

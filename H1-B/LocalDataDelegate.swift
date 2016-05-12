@@ -10,4 +10,5 @@ import Foundation
 
 protocol LocalDataDelegate {
     func getData() -> AnyObject
+    func synchronize()
 }
