@@ -165,7 +165,7 @@ class EmployerDetailViewController: UIViewController, UITableViewDataSource, UIT
         mainViews = (aboutView, sponsoredTitlesView)
         
         
-        showAbout()
+        showSponsoredTitles()
         
     }
 
@@ -262,7 +262,7 @@ class EmployerDetailViewController: UIViewController, UITableViewDataSource, UIT
     }
     
     func addDataToSponsoredTitlesView(sponsoredTitlesView: UIScrollView) {
-        for i in 0..<5 {
+        for i in 0..<1 {
             let dataView = UIView()
             dataView.backgroundColor = UIColor.whiteColor()
             dataView.layer.borderColor = self.borderColor.CGColor
