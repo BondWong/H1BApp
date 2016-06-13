@@ -58,48 +58,6 @@ class SearchViewController: UIViewController {
         contentView.addConstraint(NSLayoutConstraint(item: contentView, attribute: .Width, relatedBy: .Equal, toItem: nil, attribute: .NotAnAttribute, multiplier: 0, constant: UIScreen.mainScreen().bounds.width))
         contentView.addConstraint(NSLayoutConstraint(item: contentView, attribute: .Height, relatedBy: .Equal, toItem: nil, attribute: .NotAnAttribute, multiplier: 0, constant: UIScreen.mainScreen().bounds.height - 64))
         
-        let optionsView = UIStackView()
-        optionsView.axis = .Horizontal
-        optionsView.spacing = 5
-        optionsView.distribution = .FillEqually
-        
-        let titleOption = UIButton(type: .Custom)
-        titleOption.setTitle("Title", forState: .Normal)
-        titleOption.setTitleColor(UIColor.whiteColor(), forState: .Normal)
-        titleOption.layer.borderWidth = borderWidth
-        titleOption.layer.borderColor = UIColor.lightGrayColor().CGColor
-        titleOption.layer.cornerRadius = cornerRadius
-        titleOption.addTarget(self, action: #selector(SearchViewController.selectOption(_:)), forControlEvents: .TouchUpInside)
-        
-        let employerOption = UIButton(type: .Custom)
-        employerOption.setTitle("Employer", forState: .Normal)
-        employerOption.setTitleColor(UIColor.whiteColor(), forState: .Normal)
-        employerOption.layer.borderWidth = borderWidth
-        employerOption.layer.borderColor = UIColor.lightGrayColor().CGColor
-        employerOption.layer.cornerRadius = cornerRadius
-        employerOption.addTarget(self, action: #selector(SearchViewController.selectOption(_:)), forControlEvents: .TouchUpInside)
-        
-        let locationOption = UIButton(type: .Custom)
-        locationOption.setTitle("Location", forState: .Normal)
-        locationOption.setTitleColor(UIColor.whiteColor(), forState: .Normal)
-        locationOption.layer.borderWidth = borderWidth
-        locationOption.layer.borderColor = UIColor.lightGrayColor().CGColor
-        locationOption.layer.cornerRadius = cornerRadius
-        locationOption.addTarget(self, action: #selector(SearchViewController.selectOption(_:)), forControlEvents: .TouchUpInside)
-        
-        options.appendContentsOf([titleOption, employerOption, locationOption])
-        
-        optionsView.addArrangedSubview(titleOption)
-        optionsView.addArrangedSubview(employerOption)
-        optionsView.addArrangedSubview(locationOption)
-        
-        contentView.addSubview(optionsView)
-        optionsView.translatesAutoresizingMaskIntoConstraints = false
-        optionsView.topAnchor.constraintEqualToAnchor(contentView.topAnchor, constant: (UIScreen.mainScreen().bounds.height-64)/5).active = true
-        optionsView.widthAnchor.constraintEqualToAnchor(contentView.widthAnchor, multiplier: 0.8).active = true
-        optionsView.centerXAnchor.constraintEqualToAnchor(contentView.centerXAnchor).active = true
-        optionsView.heightAnchor.constraintEqualToAnchor(contentView.heightAnchor, multiplier: heightFactor).active = true
-        
         let upperInput = UITextField()
         upperInput.backgroundColor = UIColor.whiteColor()
         upperInput.rightViewMode = .Never
@@ -112,12 +70,12 @@ class SearchViewController: UIViewController {
         upperInput.layer.borderColor = UIColor.lightGrayColor().CGColor
         
         contentView.addSubview(upperInput)
-        upperInput.translatesAutoresizingMaskIntoConstraints = false
-        upperInput.topAnchor.constraintEqualToAnchor(optionsView.bottomAnchor, constant: 20).active = true
-        upperInput.widthAnchor.constraintEqualToAnchor(contentView.widthAnchor, multiplier: 0.8).active = true
-        upperInput.heightAnchor.constraintEqualToAnchor(optionsView.heightAnchor).active = true
-        upperInput.centerXAnchor.constraintEqualToAnchor(optionsView.centerXAnchor).active = true
         
+        upperInput.translatesAutoresizingMaskIntoConstraints = false
+        upperInput.topAnchor.constraintEqualToAnchor(contentView.topAnchor, constant: (UIScreen.mainScreen().bounds.height-64)/5).active = true
+        upperInput.widthAnchor.constraintEqualToAnchor(contentView.widthAnchor, multiplier: 0.8).active = true
+        upperInput.heightAnchor.constraintEqualToAnchor(contentView.heightAnchor, multiplier: heightFactor).active = true
+        upperInput.centerXAnchor.constraintEqualToAnchor(contentView.centerXAnchor).active = true
         
         let lowerInput = UITextField()
         lowerInput.backgroundColor = UIColor.whiteColor()
@@ -138,8 +96,24 @@ class SearchViewController: UIViewController {
         lowerInput.centerXAnchor.constraintEqualToAnchor(upperInput.centerXAnchor).active = true
         
         inputTuple = (upperInput, lowerInput)
+        inputTuple.0.placeholder = "Job Title, Keywords or Company"
+        inputTuple.1.placeholder = "Location (City, State)"
         
-        selectOption(titleOption)
+        let searchButton = UIButton(type: .Custom)
+        searchButton.setTitle("Search", forState: .Normal)
+        searchButton.setTitleColor(UIColor.whiteColor(), forState: .Normal)
+        searchButton.layer.borderWidth = borderWidth
+        searchButton.layer.borderColor = UIColor.lightGrayColor().CGColor
+        searchButton.layer.cornerRadius = cornerRadius
+        searchButton.addTarget(self, action: #selector(SearchViewController.search), forControlEvents: .TouchUpInside)
+        
+        contentView.addSubview(searchButton)
+        searchButton.translatesAutoresizingMaskIntoConstraints = false
+        searchButton.topAnchor.constraintEqualToAnchor(lowerInput.bottomAnchor, constant: 20).active = true
+        searchButton.widthAnchor.constraintEqualToAnchor(lowerInput.widthAnchor).active = true;
+        searchButton.heightAnchor.constraintEqualToAnchor(lowerInput.heightAnchor).active = true;
+        searchButton.centerXAnchor.constraintEqualToAnchor(lowerInput.centerXAnchor).active = true;
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -152,72 +126,16 @@ class SearchViewController: UIViewController {
         inputTuple.1.resignFirstResponder()
     }
     
-    func selectOption(option: UIButton) {
-        for button in options {
-            if button == option {
-                option.enabled = false
-                option.backgroundColor = UIColor.lightGrayColor()
-                option.setNeedsDisplay()
-                
-                switch option.titleForState(.Normal){
-                    case let title where title == "Title":
-                        selectTitleOption()
-                    case let title where title == "Employer":
-                        selectEmpolyerOption()
-                    case let title where title == "Location":
-                        selectLocationOption()
-                    default:
-                        break
-                }
-                
-            } else {
-                button.enabled = true
-                button.backgroundColor = UIColor.clearColor()
-                button.setNeedsDisplay()
-            }
-        }
-    }
-    
-    func selectTitleOption() {
-        inputTuple.0.placeholder = "Job Title"
-        inputTuple.0.rightViewMode = .Never
-        inputTuple.0.text = ""
-        inputTuple.1.hidden = false
-        inputTuple.1.placeholder = "City or State (optional)"
-        inputTuple.1.text = ""
-        
-        self.choice = "Title"
-    }
-    
-    func selectEmpolyerOption() {
-        inputTuple.0.text = ""
-        inputTuple.0.placeholder = "Empolyer name"
-        inputTuple.1.hidden = true
-        inputTuple.1.text = ""
-        
-        self.choice = "Employer"
-    }
-    
-    func selectLocationOption() {
-        inputTuple.0.placeholder = "City or State"
-        inputTuple.0.rightViewMode = .Always
-        inputTuple.0.text = ""
-        inputTuple.1.hidden = true
-        inputTuple.1.text = ""
-        
-        self.choice = "Location"
-    }
-    
     func search() {
         var upperInputText = inputTuple.0.text!
+        var lowerInputText = inputTuple.1.text!
         upperInputText = upperInputText.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
-        _ = inputTuple.1.text!
-        if upperInputText == "" {
-            let alert = UIAlertController(title: "Message Require", message: "Please input necessary message", preferredStyle: .Alert)
+        lowerInputText = lowerInputText.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
+        
+        if upperInputText == "" && lowerInputText == "" {
+            let alert = UIAlertController(title: "Message Require", message: "Please input keyword or location", preferredStyle: .Alert)
             
-            let dismissAction = UIAlertAction(title: "Dismiss", style: .Destructive, handler: {[unowned self] _ in
-                self.inputTuple.0.backgroundColor = UIColor(red: 236/255, green: 120/255, blue: 90/255, alpha: 1)
-            })
+            let dismissAction = UIAlertAction(title: "Dismiss", style: .Destructive, handler: nil)
             
             alert.addAction(dismissAction)
             
@@ -226,27 +144,9 @@ class SearchViewController: UIViewController {
             return
         }
         
-        self.inputTuple.0.backgroundColor = UIColor.whiteColor()
-        
         upperInputText = upperInputText.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLPathAllowedCharacterSet())!
-        url = ""
-        switch self.choice {
-            case "Title":
-                var location = inputTuple.1.text!
-                location = location.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
-                if location == "" {
-                    url = "\(networkPrefix)/position/title/\(upperInputText)/"
-                } else {
-                    location = location.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLPathAllowedCharacterSet())!
-                    url = "\(networkPrefix)/position/title/\(upperInputText)/address/\(location)/"
-                }
-            case "Employer":
-                url = "\(networkPrefix)/position/company/\(upperInputText)/"
-            case "Location":
-                url = "\(networkPrefix)/position/address/\(upperInputText)/"
-            default:
-                break
-        }
+        lowerInputText = lowerInputText.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLPathAllowedCharacterSet())!
+        url = "\(networkPrefix)/position/keyword/\(upperInputText)/location\(lowerInputText)"
         
         let task = session.dataTaskWithURL(NSURL(string: url + "\(start)")!, completionHandler: {[weak self](data: NSData?, response: NSURLResponse?, error: NSError?) in
             if error != nil {

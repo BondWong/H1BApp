@@ -18,9 +18,9 @@ class EmployerDetailViewController: UIViewController, UITableViewDataSource, UIT
     var heightFactor:CGFloat {
         switch(getDeviceModel()) {
         case .IPHONE4_4s:
-            return 0.7
+            return 0.55
         case .IPHONE5_5s:
-            return 0.6
+            return 0.5
         case .IPHONE6_6s:
             return 0.5
         case .IPHONE6p_6ps:
@@ -34,7 +34,7 @@ class EmployerDetailViewController: UIViewController, UITableViewDataSource, UIT
     var dataViewHeight: CGFloat {
         switch(getDeviceModel()) {
         case .IPHONE4_4s:
-            return UIScreen.mainScreen().bounds.height / 4.5
+            return UIScreen.mainScreen().bounds.height / 3.5
         case .IPHONE5_5s:
             return UIScreen.mainScreen().bounds.height / 4.5
         case .IPHONE6_6s:
